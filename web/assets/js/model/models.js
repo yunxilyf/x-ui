@@ -143,6 +143,7 @@ class DBInbound {
             case Protocols.VLESS:
             case Protocols.TROJAN:
             case Protocols.SHADOWSOCKS:
+            case Protocols.SOCKS:
                 return true;
             default:
                 return false;
