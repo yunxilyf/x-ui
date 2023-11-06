@@ -1034,12 +1034,19 @@ class Inbound extends XrayCommonClass {
         return `trojan://${settings.clients[0].password}@${address}:${this.port}#${encodeURIComponent(remark)}`;
     }
 
+     genSocksLink(address='', remark='') {
+        let settings = this.settings;
+        return `${address}:${this.port}:${this.username}:${this.password}`;
+    }
+    
+
     genLink(address='', remark='') {
         switch (this.protocol) {
             case Protocols.VMESS: return this.genVmessLink(address, remark);
             case Protocols.VLESS: return this.genVLESSLink(address, remark);
             case Protocols.SHADOWSOCKS: return this.genSSLink(address, remark);
             case Protocols.TROJAN: return this.genTrojanLink(address, remark);
+            case Protocols.SOCKS: return this.genSocksLink(address, remark);
             default: return '';
         }
     }
